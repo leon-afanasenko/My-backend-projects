@@ -1,1 +1,1 @@
-Практика бекенд
+backend practice
