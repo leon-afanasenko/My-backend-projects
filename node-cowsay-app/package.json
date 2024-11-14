@@ -1,0 +1,12 @@
+{
+  "name": "node-cowsay-app",
+  "version": "1.0.0",
+  "description": "A simple Node.js app that prints system info using cowsay.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "cowsay": "^1.5.0"
+  }
+}
