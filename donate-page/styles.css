@@ -1,0 +1,128 @@
+.monobank-button {
+  background-color: rgb(45, 45, 56);
+}
+
+.monobank-button:hover {
+  background-color: rgb(35, 35, 46);
+}
+
+.monobank-copy {
+  background-color: rgb(45, 45, 56);
+}
+
+.privat24-button {
+  background-color: rgb(113, 174, 68);
+}
+
+.privat24-button:hover {
+  background-color: rgb(103, 164, 58);
+}
+
+.privat24-copy {
+  background-color: rgb(113, 174, 68);
+}
+
+.paypal-button {
+  background-color: rgb(245, 198, 87);
+  padding: 0.375rem 0.75rem;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  transition: all 0.15s ease-in-out;
+}
+
+.paypal-button img {
+  max-width: 100%;
+  max-height: 1.6rem;
+}
+
+.paypal-button:hover {
+  background-color: rgb(225, 178, 67);
+  text-decoration: none;
+}
+.paypal-copy {
+  background-color: rgb(245, 198, 87);
+}
+
+.clipboard-button {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.btn btn-secondary copy-btn {
+  width: 20px;
+  height: 20px;
+}
+
+.donate-button {
+  width: 160px;
+}
+
+#copied-notification {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+body {
+  font-size: 18px;
+  background-color: #f5f5f5;
+}
+
+header {
+  padding: 2rem 0;
+}
+
+.progress {
+  height: 30px;
+}
+
+.donate-button {
+  font-size: 1.1rem;
+  padding: 0.7rem 1.2rem;
+  width: 200px;
+}
+
+.paypal-button img {
+  max-height: 1.6rem;
+}
+
+.clipboard-button {
+  width: 37px;
+  height: 37px;
+}
+
+.tooltip-inner {
+  font-size: 1rem;
+  padding: 0.7rem 1rem;
+}
+.tooltip-arrow {
+  width: 10px;
+  height: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.row {
+  flex-grow: 0.3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
