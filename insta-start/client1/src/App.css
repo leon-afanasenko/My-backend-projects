@@ -1,0 +1,100 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  background-color: #fafafa;
+}
+
+.App {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  border: 1px solid #dbdbdb;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: white;
+  border-bottom: 1px solid #dbdbdb;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.navbar h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #262626;
+}
+
+.navbar img {
+  width: 30px;
+  height: 30px;
+}
+
+.feed {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.post-card {
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.post-header img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.post-header h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #262626;
+}
+
+.post-content {
+  padding: 10px;
+  font-size: 14px;
+  color: #262626;
+}
+
+.post-footer {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #dbdbdb;
+}
+
+.post-footer button {
+  background: none;
+  border: none;
+  color: #0095f6;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.post-footer button:hover {
+  text-decoration: underline;
+}
