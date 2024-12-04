@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Screen Recorder</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #202020;
+        color: white;
+      }
+      video {
+        max-width: 100%;
+        max-height: 70%;
+        border: 2px solid #fff;
+      }
+      .controls {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <video autoplay playsinline></video>
+    <div class="controls">
+      <button id="startCapture">Start Screen Capture</button>
+      <button id="stopCapture" disabled>Stop Screen Capture</button>
+    </div>
+    <script>
+      let mediaStream = null;
+
+      // Функция для запуска трансляции экрана
+      document
+        .getElementById("startCapture")
+        .addEventListener("click", async () => {
+          try {
+            const videoElem = document.querySelector("video");
+
+            // Захват экрана
+            mediaStream = await navigator.mediaDevices.getDisplayMedia({
+              video: { cursor: "always" },
+              audio: false,
+            });
+            videoElem.srcObject = mediaStream;
+
+            // Обновление интерфейса
+            document.getElementById("startCapture").disabled = true;
+            document.getElementById("stopCapture").disabled = false;
+
+            // Остановить трансляцию при завершении
+            mediaStream.getVideoTracks()[0].addEventListener("ended", () => {
+              stopCapture();
+              alert("Screen sharing stopped.");
+            });
+          } catch (err) {
+            console.error("Error capturing screen:", err.message);
+            alert(`Error: ${err.message}`);
+          }
+        });
+
+      // Функция для остановки трансляции
+      document.getElementById("stopCapture").addEventListener("click", () => {
+        stopCapture();
+      });
+
+      function stopCapture() {
+        if (mediaStream) {
+          // Остановить все треки потока
+          mediaStream.getTracks().forEach((track) => track.stop());
+          mediaStream = null;
+        }
+
+        document.getElementById("startCapture").disabled = false;
+        document.getElementById("stopCapture").disabled = true;
+
+        // Очистить видео
+        const videoElem = document.querySelector("video");
+        videoElem.srcObject = null;
+      }
+    </script>
+  </body>
+</html>
