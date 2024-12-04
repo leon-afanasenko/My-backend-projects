@@ -31,3 +31,5 @@ Optimize performance for longer recording sessions.
 
 Conclusion 🏁
 This app showcases the integration of browser APIs with desktop solutions via Electron.js. It’s a simple yet powerful starting point for exploring screen capture technology.
+
+unset NODE_OPTIONS

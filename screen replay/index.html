@@ -33,13 +33,51 @@
     </style>
   </head>
   <body>
-    <video autoplay playsinline></video>
+    <video id="videoElement" autoplay playsinline></video>
     <div class="controls">
       <button id="startCapture">Start Screen Capture</button>
       <button id="stopCapture" disabled>Stop Screen Capture</button>
+      <button id="switchCamera">Switch Camera</button>
     </div>
     <script>
       let mediaStream = null;
+      let currentStream = null;
+      let currentDevice = 0; // Стартуем с первой камеры
+
+      // Функция для получения всех доступных камер
+      async function getCameras() {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        return devices.filter((device) => device.kind === "videoinput");
+      }
+
+      // Функция для переключения камеры
+      async function switchCamera() {
+        const cameras = await getCameras();
+        currentDevice = (currentDevice + 1) % cameras.length; // Переключаем между камерами
+
+        // Останавливаем текущий поток
+        if (mediaStream) {
+          mediaStream.getTracks().forEach((track) => track.stop());
+        }
+
+        // Получаем поток с новой камерой
+        const constraints = {
+          video: {
+            deviceId: cameras[currentDevice].deviceId
+              ? { exact: cameras[currentDevice].deviceId }
+              : undefined,
+          },
+        };
+
+        try {
+          mediaStream = await navigator.mediaDevices.getUserMedia(constraints);
+          const videoElement = document.getElementById("videoElement");
+          videoElement.srcObject = mediaStream;
+        } catch (err) {
+          console.error("Error switching camera: ", err);
+          alert("Error: " + err.message);
+        }
+      }
 
       // Функция для запуска трансляции экрана
       document
@@ -75,6 +113,7 @@
         stopCapture();
       });
 
+      // Функция для остановки захвата
       function stopCapture() {
         if (mediaStream) {
           // Остановить все треки потока
@@ -89,6 +128,28 @@
         const videoElem = document.querySelector("video");
         videoElem.srcObject = null;
       }
+
+      // Инициализация камеры и экрана
+      async function init() {
+        const cameras = await getCameras();
+        if (cameras.length > 0) {
+          const constraints = {
+            video: { deviceId: { exact: cameras[currentDevice].deviceId } },
+          };
+
+          mediaStream = await navigator.mediaDevices.getUserMedia(constraints);
+          const videoElement = document.getElementById("videoElement");
+          videoElement.srcObject = mediaStream;
+        } else {
+          alert("No cameras found.");
+        }
+      }
+
+      init();
+
+      document
+        .getElementById("switchCamera")
+        .addEventListener("click", switchCamera);
     </script>
   </body>
 </html>
