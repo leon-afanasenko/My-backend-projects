@@ -1,0 +1,29 @@
+{
+  "name": "music-downloader",
+  "version": "1.0.0",
+  "description": "a telegram bot for searching and downloading music's in spotify, soundcloud, and youtube",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "telegram-bot",
+    "soundcloud-downloader",
+    "youtube-downloader"
+  ],
+  "author": "Leon",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.2.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "fluent-ffmpeg": "^2.1.2",
+    "mongoose": "^6.8.0",
+    "progress-stream": "^2.0.0",
+    "sanitize-filename": "^1.6.3",
+    "soundcloud-downloader": "^1.0.0",
+    "telegraf": "^4.11.2",
+    "ytdl-core": "^4.11.2"
+  }
+}
