@@ -55,3 +55,4 @@ coverage/
 *.seed
 *.pid.lock
 .DS_Store
+.terraform/
