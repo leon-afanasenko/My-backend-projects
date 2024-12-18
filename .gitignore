@@ -56,3 +56,4 @@ coverage/
 *.pid.lock
 .DS_Store
 .terraform/
+.env
